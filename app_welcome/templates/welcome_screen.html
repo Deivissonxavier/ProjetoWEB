@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" 
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Font Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'app_welcome/css/welcome_screen_global.css' %}">
+  <link rel="shortcut icon" href="{% static 'app_welcome/img/svg/fazenda.svg' %}">
+
+  <title>🍅Horta🥕</title>
+  <style>
+    body {
+        background-image: url("{% static 'images/background.jpg' %}");
+        background-size: cover;  /* Para a imagem cobrir a tela inteira */
+        background-position: center;  /* Para centralizar a imagem */
+    }
+</style>
+</head>
+<body>
+  <header class="header">
+    <h1>Horta do(a)</h1>
+    <div class="horta-count">
+      <ul>
+          {% for specie, count in species_totals.items %}
+              <li data-specie="{{ specie|lower }}" data-count="{{ count }}">
+                  {{ specie|capfirst }}: {{ count }}
+              </li>
+          {% empty %}
+          {% endfor %}
+      </ul>
+  </div>
+    <button class="logout-button" onclick="handleLogout()">Sair</button>
+</header>
+
+  <section class="content">
+    <h1>🍅Horta🥕</h1>
+
+    <ol class="hortas">
+      {% if hortas %}
+      <!-- Iterar sobre os animais no contexto -->
+      {% for horta in hortas %}
+      <li class="horta">
+        <span class="number">#{{ forloop.counter|default:0 }}</span>
+        <span class="name">{{ horta.specie_horta|capfirst }}</span>
+    
+        <div class="detail">
+          <ol class="types">
+            {% for horta in horta.hortas.all %}
+            <li class="type">{{ horta.nutriente_name }}</li>
+            {% empty %}
+            <li class="type">Sem alimentos cadastrados</li>
+            {% endfor %}
+          </ol>
+    
+          <!-- Imagem fictícia baseada na espécie do horta -->
+          <img src="{% static 'app_welcome/img/svg/' %}{{ horta.specie_horta }}.svg" 
+          alt="{{ horta.specie_horta|capfirst }}">
+        </div>
+      </li>
+      {% empty %}
+      <li class="horta no-data">
+        <span class="name">Nenhum cultura cadastrada</span>
+      </li>
+      {% endfor %}
+      {% else %}
+    
+  {% endif %}
+    
+      <!-- Formulário para adicionar horta -->
+      <li class="horta add">
+        <span class="number">#000</span>
+        <span class="name">Adicionar</span>
+    
+        <div class="detail">
+          <ol class="types">
+            <li class="type">nutriente 1</li>
+            <li class="type">nutriente 2</li>
+          </ol>
+    
+          <img src="{% static 'app_welcome/img/svg/add.svg' %}" alt="Adicionar Horta">
+        </div>
+    
+        <form class="horta-form" action="{% url 'welcome' %}" method="POST" name="login_credentials" style="display: none;" data-img-base="{% static 'app_welcome/img/svg/' %}">
+          {% csrf_token %}
+          <label for="horta-select">Escolha a cultura:</label>
+          <select id="horta-select" name="horta">
+            <option value="tomate">tomate</option>
+            <option value="cenoura">cenoura</option>
+            <option value="coentro">coentro</option>
+            <option value="almeirao">almeirao</option>
+            <option value="alface">alface</option>
+            <option value="repolho">repolho</option>
+          </select>
+    
+          <label for="horta-color">Cor da cultura:</label>
+          <input type="text" id="horta-color" name="color" placeholder="Digite a cor da cultura">
+    
+          <button type="submit">Adicionar</button>
+        </form>
+      </li>
+    </ol>
+    
+  </section>
+
+  <!-- HTMX-->
+  <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+
+  <!-- JavaScript -->
+  <script src="{% static 'app_welcome/js/welcome_screen_component_header-simple.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+/* All */
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    color: aliceblue;
+    font-family: "Cinzel", system-ui;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #f0f4f8; /* Fundo claro */
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+}
+
+.container {
+    height: 100%;
+    width: 100%; 
+}
+
+/* Header */
+header {
+    height: 20%;
+    background-color: #6c63ff; /* Roxo pastel */
+
+    display: flex;
+    align-items: center;
+}
+
+header .title {
+    display: flex;
+    align-items: center;
+}
+
+header .title p {
+    color: #ffffff;
+    font-weight: 650;
+    font-size: 1.5rem;
+}
+
+/* Main */
+main {
+    background-color: #ffffff; /* Branco neutro */
+    height: 70%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_area {
+    max-width: 60%;
+    max-height: 60%;
+    height: 500px;
+    width: 500px;
+
+    border: #8ecae6 solid 0.25rem; /* Azul suave */
+    border-radius: 1rem;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login_area .login_title {
+    color: #023047; /* Azul escuro */
+    font-weight: 900;
+    font-size: 1.25rem;
+}
+
+.login_area .login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login_area .login form span {
+    display: flex;
+    justify-content: center;
+}
+
+.login_area input[type=text] {
+    margin-top: 0.25rem;
+    width: 95%;
+    height: 35px;
+    background-color: #e8f5e9; /* Verde muito claro */
+    color: #023047;
+    font-weight: 900;
+    border: #8ecae6 solid 0.1rem; /* Azul suave */
+    border-radius: 0.5rem;
+}
+
+.login_area .submit {
+    display: flex;
+    flex-direction: column;
+}
+
+.login_area .submit .send {
+    margin-top: 1rem;
+    color: #ffffff;
+    height: 35px;
+    width: 100%;
+    background-color: #fb8500; /* Laranja pastel */
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.login_area .submit .send:hover {
+    background-color: #ffb703; /* Amarelo pastel */
+}
+
+.login_area .submit .create {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    height: 35px;
+    width: 100%;
+    background-color: #219ebc; /* Azul médio */
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.login_area .submit .create:hover {
+    background-color: #126782; /* Azul mais escuro */
+}
+
+/* Footer */
+footer {
+    background-color: #6c63ff; /* Roxo pastel */
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.author a {
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+@media screen and (min-width: 425px) {
+    header .title p {
+        font-size: 2rem;
+    }
+
+    .login_area .login_title {
+        font-size: 1.5rem;
+    }
+
+    .login_area .login form input[type="text"] {
+        margin-top: 1.5rem;
+        width: 100%;
+    }
+}
+
+@media screen and (min-height: 720px) {
+    header .title p {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .login_area .login_title {
+        font-size: 1.75rem;
+    }
+
+    .login_area .login form input[type="text"] {
+        margin-top: 2rem;
+        width: 100%;
+    }
+}

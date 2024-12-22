@@ -1,0 +1,170 @@
+/* Reset geral de box-sizing e fontes */
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f4f8; /* Fundo suave */
+}
+
+/* Header geral */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #6c63ff; /* Roxo pastel */
+    color: white;
+    border-radius: 1rem;
+    margin: 1rem;
+    flex-wrap: wrap;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex: 1 1 100%;
+    text-align: center;
+}
+
+.horta-count ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.horta-count ul li {
+    font-size: 0.875rem;
+    background-color: #8ecae6; /* Azul claro */
+    color: #02304747; /* Azul escuro */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.logout-button {
+    background-color: #f94144; /* Vermelho suave */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.logout-button:hover {
+    background-color: #d90429;
+}
+
+/* Conteúdo da página */
+.content {
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    background-color: #ffffff;
+}
+
+.content h1 {
+    padding: 0;
+}
+
+@media screen and (min-width: 992px) {
+    .content {
+        max-width: 992px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+    }
+}
+
+/* Responsividade para o layout de animais */
+.hortas {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.horta {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    background-color: #ffb703; /* Amarelo pastel */
+}
+
+.horta.add {
+    background-color: #fb8500; /* Laranja pastel */
+}
+
+.horta:hover {
+    scale: 1.05;
+}
+
+.horta .name {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+.horta .number {
+    color: #023047;
+    text-align: right;
+    opacity: 0.3;
+}
+
+.horta .detail .types .type {
+    background-color: #219ebc; /* Azul médio */
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem 0;
+    font-size: 0.625rem;
+    border-radius: 1rem;
+}
+
+.horta.add.expanded {
+    flex-direction: column;
+    background-color: #e8f5e9; /* Verde muito claro */
+    padding: 4rem 2rem;
+    border: 2px solid #8ecae6;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Formulário */
+.horta-form button {
+    background-color: #219ebc; /* Azul médio */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.horta-form button:hover {
+    background-color: #126782; /* Azul mais escuro */
+}
+
+/* Grid responsivo para animações */
+@media screen and (min-width: 380px) {
+    .hortas {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .hortas {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .hortas {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

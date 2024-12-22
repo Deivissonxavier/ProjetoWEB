@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'app_create_account/css/create_account_screen.css' %}">
+    <link rel="shortcut icon" href="{% static 'app_create_account/img/login_24px_white.svg' %}">
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <div class="title">
+                <p>Registrar</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="login_area">
+                <div class="login_title">Registrar</div>
+                <div class="login">
+                    <form class="register_form" action="{% url 'register' %}" name="login_credentials" method="POST">{% csrf_token %}
+                        <div class="credential_info">
+                            <span class="name">
+                                <input type="text" placeholder="Nome" name="user_name">
+                            </span>
+                            <span class="password">
+                                <input type="text" placeholder="Senha" name="user_pass">
+                            </span>
+                            <span class="confirm_password">
+                                <input type="text" placeholder="Confirmar Senha" name="user_confirm_pass">
+                            </span>
+                        </div>
+                    
+                        <span class="submit">
+                            <input type="submit" name="Enviar">
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="author">
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'app_create_account/js/create_account_screen.js' %}"></script>
+</body>
+
+</html>
