@@ -112,3 +112,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates/static/')]
+
+# Configuração para redirecionar o usuário não autenticado para a página de login
+LOGIN_URL = 'login'  # Redireciona para a página de login se o usuário não estiver autenticado
